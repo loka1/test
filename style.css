@@ -109,8 +109,7 @@ margin-bottom: -4px;
 }
 @media screen  and (max-width: 750px) {
     #table-content{
-        overflow: scroll;
-        width: 1000%;
+        overflow-x: scroll;
         overflow-wrap: anywhere;
     }
 }

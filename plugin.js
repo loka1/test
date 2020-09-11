@@ -11,6 +11,10 @@
         }, options);
 
         list = $(settings.title).toArray();
+		
+		if(jQuery(window).width() < 700){
+			$(el).css("width","500%");
+		}
 
         $(el).append($.parseHTML(`
 
@@ -21,9 +25,9 @@
         html +="<div style='min-height:60px'>";
         $.each(list, function(index, val) {
 			if(jQuery(window).width() < 700){
-				var intprecent = 1000;
+				var intprecent = 5;
 			}else{
-				var intprecent = 100;
+				var intprecent = 1;
 			}
 
         	 var img = $(val).find("img").attr("src"),
@@ -32,7 +36,7 @@
         	 	s = $(val).offset(),
 			    d = $(document).height(),
 			     c = $(window).height(),
-			    scrollPercent = (s.top  / (d - c )  ) * intprecent ;
+			    scrollPercent = (s.top  / (d - c )  ) * 100 ;
 
 
 			    $(val).attr("id",text.replaceAll(" ","_"));
@@ -59,18 +63,20 @@
         	
         	$(window).on("scroll",function(){
 				if(jQuery(window).width() < 700){
-					var intprecent = 1000;
+					var intprecent = 5;
 				}else{
-					var intprecent = 100;
+					var intprecent = 1;
 				}
-				
+
         		var scroll = $(window).scrollTop(),
 			        dh = $(document).height(),
 			        wh = $(window).height();
-		        scrollPercent = (scroll  / (dh - wh)) * intprecent;
+		        scrollPercent = (scroll  / (dh - wh)) * 100;
 		        console.log(scrollPercent);
 		        $(el).find(".bar2").css("width",scrollPercent + "%");
-
+				if(jQuery(window).width() < 700){
+					$(el).css("margin-left","-"+scrollPercent * intprecent + "%");
+				}
         	});
 
 
