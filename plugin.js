@@ -20,14 +20,19 @@
         `));
         html +="<div style='min-height:60px'>";
         $.each(list, function(index, val) {
-        	 
+			if(jQuery(window).width() < 700){
+				var intprecent = 1000;
+			}else{
+				var intprecent = 100;
+			}
+
         	 var img = $(val).find("img").attr("src"),
 				 text = $.trim($(val).text()),
 				 
         	 	s = $(val).offset(),
 			    d = $(document).height(),
 			     c = $(window).height(),
-			    scrollPercent = (s.top  / (d - c )  ) * 100 ;
+			    scrollPercent = (s.top  / (d - c )  ) * intprecent ;
 
 
 			    $(val).attr("id",text.replaceAll(" ","_"));
@@ -53,11 +58,16 @@
         // jQuery(document).ready(function($) {
         	
         	$(window).on("scroll",function(){
-
+				if(jQuery(window).width() < 700){
+					var intprecent = 1000;
+				}else{
+					var intprecent = 100;
+				}
+				
         		var scroll = $(window).scrollTop(),
 			        dh = $(document).height(),
 			        wh = $(window).height();
-		        scrollPercent = (scroll  / (dh - wh)) * 100;
+		        scrollPercent = (scroll  / (dh - wh)) * intprecent;
 		        console.log(scrollPercent);
 		        $(el).find(".bar2").css("width",scrollPercent + "%");
 
