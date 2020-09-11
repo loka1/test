@@ -12,9 +12,7 @@
 
         list = $(settings.title).toArray();
 		
-		if(jQuery(window).width() < 700){
-			$(el).css("width","500%");
-		}
+
 
         $(el).append($.parseHTML(`
 
@@ -52,7 +50,13 @@
 
         });
         html +="</div>";
-        $(el).append($.parseHTML(html));
+		$(el).append($.parseHTML(html));
+		
+		if(jQuery(window).width() < 700){
+			$(el).css("width","500%");
+			
+		}
+
         // get head info and store in arry
         console.log(list);
         // change url on click
@@ -75,7 +79,7 @@
 		        console.log(scrollPercent);
 		        $(el).find(".bar2").css("width",scrollPercent + "%");
 				if(jQuery(window).width() < 700){
-					$(el).css("margin-left","-"+scrollPercent * intprecent + "%");
+					$(el).css("margin-left","-"+scrollPercent + "%");
 				}
         	});
 
